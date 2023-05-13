@@ -18,13 +18,15 @@ export interface Work {
     width: number;
   };
   tags: Tag[];
+  webSiteURL: string;
+  githubURL: string;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
   revisedAt: string;
 }
 
-interface Tag {
+export interface Tag {
   id: string;
   tag: string;
   createdAt: string;

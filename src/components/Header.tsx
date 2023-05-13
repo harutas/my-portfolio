@@ -8,6 +8,21 @@ import { motion, useCycle } from "framer-motion";
 import { MenuToggle } from "./header/MenuToggle";
 import { Navigation } from "./header/Navigation";
 
+const navLinkPath = [
+  {
+    linkPath: "/",
+    navText: "Home",
+  },
+  {
+    linkPath: "/profile",
+    navText: "Profile",
+  },
+  {
+    linkPath: "/works",
+    navText: "Works",
+  },
+];
+
 const sidebar = {
   open: (height = 1000) => ({
     clipPath: `circle(${height * 2 + 200}px at 276px 38px)`,
@@ -39,21 +54,6 @@ const Header = () => {
   const { height } = useDimensions(containerRef);
 
   const pathname = usePathname();
-  console.log(pathname);
-  const navLinkPath = [
-    {
-      linkPath: "/",
-      navText: "Home",
-    },
-    {
-      linkPath: "/profile",
-      navText: "Profile",
-    },
-    {
-      linkPath: "/works",
-      navText: "Works",
-    },
-  ];
 
   const navLink = navLinkPath.map((link) => {
     return (
@@ -83,7 +83,7 @@ const Header = () => {
           ref={containerRef}
         >
           <motion.div className="bg-gray-200 absolute top-0 right-0 bottom-0 w-80" variants={sidebar} style={style} />
-          <Navigation navLinkPath={navLinkPath} pathname={pathname} toggle={() => toggleOpen()} />
+          {isOpen && <Navigation navLinkPath={navLinkPath} pathname={pathname} toggle={() => toggleOpen()} />}
           <MenuToggle toggle={toggleOpen}></MenuToggle>
         </motion.nav>
       </header>
