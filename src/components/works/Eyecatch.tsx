@@ -10,7 +10,7 @@ interface Props {
 
 export const Eyecatch = ({ eyecatch }: Props) => {
   return (
-    <div className="group h-48 overflow-hidden bg-gray-100 md:h-64">
+    <div className="group h-60 overflow-hidden bg-gray-100 md:h-64">
       {eyecatch && eyecatch.url ? (
         <Image
           src={eyecatch.url}

@@ -14,13 +14,16 @@ interface Props {
 const Article: NextPage<Props> = ({ work }: Props) => {
   return (
     // article - start
-    <div key={work.id} className="flex flex-col overflow-hidden rounded-lg border bg-white">
+    <div
+      key={work.id}
+      className="flex flex-col overflow-hidden rounded-lg border bg-white shadow-lg hover:scale-105 duration-300"
+    >
       <Eyecatch eyecatch={work.eyecatch} />
       <div className="flex flex-1 flex-col p-3">
         <ProjectTitle title={work.title} />
         <Tags tags={work.tags} />
         <ProjectDescription description={work.description} />
-        <LinkButtons webSiteURL={work.webSiteURL} githubURL={work.githubURL} />
+        <LinkButtons websiteURL={work.websiteURL} githubURL={work.githubURL} />
       </div>
     </div>
   );

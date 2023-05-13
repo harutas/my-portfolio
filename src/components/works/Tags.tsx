@@ -6,7 +6,7 @@ interface Props {
 
 export const Tags = ({ tags }: Props) => {
   return (
-    <div className="mt-auto flex items-end justify-start">
+    <div className="flex items-end justify-start">
       {tags &&
         tags.map((tag) => (
           <span

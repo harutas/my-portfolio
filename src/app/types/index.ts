@@ -18,7 +18,7 @@ export interface Work {
     width: number;
   };
   tags: Tag[];
-  webSiteURL: string;
+  websiteURL: string;
   githubURL: string;
   createdAt: string;
   updatedAt: string;
