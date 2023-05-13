@@ -1,3 +1,8 @@
+export interface NavLinkPath {
+  linkPath: string;
+  navText: string;
+}
+
 export interface WorkResponse {
   contents: Work[];
 }

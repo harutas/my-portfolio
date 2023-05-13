@@ -10,7 +10,7 @@ const Article: NextPage<Props> = ({ work }: Props) => {
   return (
     // article - start
     <div key={work.id} className="flex flex-col overflow-hidden rounded-lg border bg-white">
-      <div className="group relative block h-48 overflow-hidden bg-gray-100 md:h-64">
+      <div className="group h-48 overflow-hidden bg-gray-100 md:h-64">
         {work.eyecatch?.url ? (
           <Image
             src={work.eyecatch.url}
@@ -18,10 +18,10 @@ const Article: NextPage<Props> = ({ work }: Props) => {
             height={work.eyecatch.height}
             priority={true}
             alt=""
-            className="absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110"
+            className="h-full w-full object-cover object-center transition duration-200 group-hover:scale-110"
           />
         ) : (
-          <div className="absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110"></div>
+          <div className="h-full w-full object-cover object-center transition duration-200 group-hover:scale-110"></div>
         )}
       </div>
 

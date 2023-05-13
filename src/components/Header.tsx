@@ -1,14 +1,57 @@
-import Link from 'next/link';
+"use client";
+
+import Link from "next/link";
+import { useRef } from "react";
+import { useDimensions } from "@/app/hooks/useDimensions";
+import { usePathname } from "next/navigation";
+import { motion, useCycle } from "framer-motion";
+import { MenuToggle } from "./header/MenuToggle";
+import { Navigation } from "./header/Navigation";
+
+const sidebar = {
+  open: (height = 1000) => ({
+    clipPath: `circle(${height * 2 + 200}px at 276px 38px)`,
+    transition: {
+      type: "spring",
+      stiffness: 20,
+      restDelta: 2,
+    },
+  }),
+  closed: {
+    clipPath: "circle(30px at 276px 38px)",
+    transition: {
+      delay: 0.5,
+      type: "spring",
+      stiffness: 400,
+      damping: 40,
+    },
+  },
+};
+
+const style = {
+  background: "linear-gradient(225deg, rgba(245,245,245,1) 36%, rgba(246,153,171,1) 100%)",
+};
 
 const Header = () => {
+  // ハンバーガーメニュー
+  const [isOpen, toggleOpen] = useCycle(false, true);
+  const containerRef = useRef(null);
+  const { height } = useDimensions(containerRef);
+
+  const pathname = usePathname();
+  console.log(pathname);
   const navLinkPath = [
     {
-      linkPath: '/',
-      navText: 'Home',
+      linkPath: "/",
+      navText: "Home",
     },
     {
-      linkPath: '/works',
-      navText: 'Works',
+      linkPath: "/profile",
+      navText: "Profile",
+    },
+    {
+      linkPath: "/works",
+      navText: "Works",
     },
   ];
 
@@ -17,7 +60,9 @@ const Header = () => {
       <Link
         key={link.linkPath}
         href={link.linkPath}
-        className='text-lg font-semibold text-gray-600 transition duration-100 hover:text-indigo-500 active:text-indigo-700'
+        className={`text-xl font-semibold text-gray-600 transition duration-100 hover:text-indigo-500 active:text-indigo-700 ${
+          link.linkPath === pathname ? "text-indigo-700" : ""
+        }`}
       >
         {link.navText}
       </Link>
@@ -25,34 +70,23 @@ const Header = () => {
   });
 
   return (
-    <div className='bg-white lg:pb-12'>
-      <div className='mx-auto max-w-screen-2xl px-4 md:px-8'>
-        <header className='flex items-center justify-end py-4 md:py-8'>
-          {/* <!-- nav - start --> */}
-          <nav className='hidden gap-12 lg:flex'>{navLink}</nav>
-          {/* <!-- nav - end --> */}
+    <div className="mx-auto max-w-screen-2xl px-8 bg-teal-200">
+      <header className="flex items-center justify-end py-5 h-20">
+        {/* ナビゲーション */}
+        <motion.nav className="hidden gap-12 lg:flex">{navLink}</motion.nav>
 
-          <button
-            type='button'
-            className='inline-flex items-center gap-2 rounded-lg bg-gray-200 px-2.5 py-2 text-sm font-semibold text-gray-500 ring-indigo-300 hover:bg-gray-300 focus-visible:ring active:text-gray-700 md:text-base lg:hidden'
-          >
-            <svg
-              xmlns='http://www.w3.org/2000/svg'
-              className='h-6 w-6'
-              viewBox='0 0 20 20'
-              fill='currentColor'
-            >
-              <path
-                fillRule='evenodd'
-                d='M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z'
-                clipRule='evenodd'
-              />
-            </svg>
-            Menu
-          </button>
-          {/* <!-- buttons - end --> */}
-        </header>
-      </div>
+        {/* ハンバーガーメニュー */}
+        <motion.nav
+          className="flex items-center lg:hidden"
+          animate={isOpen ? "open" : "closed"}
+          custom={height}
+          ref={containerRef}
+        >
+          <motion.div className="bg-gray-200 absolute top-0 right-0 bottom-0 w-80" variants={sidebar} style={style} />
+          <Navigation navLinkPath={navLinkPath} pathname={pathname} toggle={() => toggleOpen()} />
+          <MenuToggle toggle={toggleOpen}></MenuToggle>
+        </motion.nav>
+      </header>
     </div>
   );
 };
