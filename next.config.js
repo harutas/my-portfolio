@@ -4,8 +4,9 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "images.unsplash.com",
+        hostname: "images.microcms-assets.io",
         port: "",
+        pathname: "/assets/**",
       },
     ],
   },

@@ -1,8 +1,29 @@
+export interface WorkResponse {
+  contents: Work[];
+}
+
 export interface Work {
   id: string;
   title: string;
-  content: string;
-  imageURL: string;
-  imageAlt: string;
-  stackBatches: string[];
+  description: string;
+  body: string;
+  eyecatch: {
+    url: string;
+    height: number;
+    width: number;
+  };
+  tags: Tag[];
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  revisedAt: string;
+}
+
+interface Tag {
+  id: string;
+  tag: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  revisedAt: string;
 }

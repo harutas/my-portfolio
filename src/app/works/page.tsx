@@ -1,29 +1,16 @@
 import Article from '@/components/works/Article';
 import type { Work } from '@/app/types';
+import { client } from '@/libs/client';
 
-const Works = () => {
-  const workData: Work[] = [
-    {
-      id: '1',
-      title: 'New trends in Tech',
-      content:
-        'This is a section of some simple filler text, also known as placeholder text. It shares some characteristics of a real written text.',
-      imageURL:
-        'https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&q=75&fit=crop&w=600',
-      imageAlt: 'Photo by Minh Pham',
-      stackBatches: ['React', 'TypeScript'],
-    },
-    {
-      id: '2',
-      title: 'New trends in Tech',
-      content:
-        'This is a section of some simple filler text, also known as placeholder text. It shares some characteristics of a real written text.',
-      imageURL:
-        'https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&q=75&fit=crop&w=600',
-      imageAlt: 'Photo by Minh Pham',
-      stackBatches: ['React', 'TypeScript'],
-    },
-  ];
+const getWorks = async (): Promise<Work[]> => {
+  const data = await client.get({
+    endpoint: 'works',
+  });
+  return data.contents;
+};
+
+const Works = async () => {
+  const works = await getWorks();
 
   return (
     <div className='bg-white py-6 sm:py-8 lg:py-12'>
@@ -37,7 +24,7 @@ const Works = () => {
         {/* <!-- text - end --> */}
 
         <div className='grid gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-8'>
-          {workData.map((work: Work) => (
+          {works.map((work: Work) => (
             <Article key={work.id} work={work} />
           ))}
         </div>

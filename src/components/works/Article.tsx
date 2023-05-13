@@ -6,20 +6,23 @@ interface Props {
   work: Work;
 }
 
-const Article: NextPage<Props> = (props) => {
-  const { work } = props;
+const Article: NextPage<Props> = ({ work }: Props) => {
   return (
     // article - start
     <div key={work.id} className="flex flex-col overflow-hidden rounded-lg border bg-white">
       <div className="group relative block h-48 overflow-hidden bg-gray-100 md:h-64">
-        <Image
-          src={work.imageURL}
-          fill
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33.3vw"
-          priority={true}
-          alt={work.imageAlt}
-          className="absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110"
-        />
+        {work.eyecatch?.url ? (
+          <Image
+            src={work.eyecatch.url}
+            width={work.eyecatch.width}
+            height={work.eyecatch.height}
+            priority={true}
+            alt=""
+            className="absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110"
+          />
+        ) : (
+          <div className="absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110"></div>
+        )}
       </div>
 
       <div className="flex flex-1 flex-col p-4 sm:p-6">
@@ -27,12 +30,12 @@ const Article: NextPage<Props> = (props) => {
           <p className="transition duration-100 hover:text-indigo-500 active:text-indigo-600">{work.title}</p>
         </h2>
 
-        <p className="mb-8 text-gray-500">{work.content}</p>
+        <p className="mb-8 text-gray-500">{work.description}</p>
 
-        <div className="mt-auto flex items-end justify-between">
-          {work.stackBatches.map((stack) => (
-            <span key={stack} className="rounded border px-2 py-1 text-sm text-gray-500">
-              {stack}
+        <div className="mt-auto flex items-end justify-start">
+          {work.tags.map((tag) => (
+            <span key={tag.id} className="rounded border px-2 py-1 text-sm text-gray-500">
+              {tag.tag}
             </span>
           ))}
         </div>
