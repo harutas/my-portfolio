@@ -4,23 +4,9 @@ import { useRef } from "react";
 import { useDimensions } from "@/app/hooks/useDimensions";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion, useCycle } from "framer-motion";
-import { MenuToggle } from "./header/MenuToggle";
-import { Navigation } from "./header/Navigation";
-
-const navLinkPath = [
-  {
-    linkPath: "/",
-    navText: "Home",
-  },
-  {
-    linkPath: "/profile",
-    navText: "Profile",
-  },
-  {
-    linkPath: "/works",
-    navText: "Works",
-  },
-];
+import { MenuToggle } from "@/components/header/MenuToggle";
+import { Navigation } from "@/components/header/Navigation";
+import { navLinkPath } from "@/app/config";
 
 const sidebar = {
   open: (height = 1000) => ({

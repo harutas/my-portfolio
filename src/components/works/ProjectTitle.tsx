@@ -3,9 +3,5 @@ interface Props {
 }
 
 export const ProjectTitle = ({ title }: Props) => {
-  return (
-    <h2 className="mb-2 text-xl font-semibold text-gray-800">
-      {title && <p className="transition duration-100">{title}</p>}
-    </h2>
-  );
+  return <>{title && <h1 className="text-xl font-semibold text-gray-800 mb-2">{title}</h1>}</>;
 };

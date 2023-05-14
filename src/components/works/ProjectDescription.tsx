@@ -3,5 +3,5 @@ interface Props {
 }
 
 export const ProjectDescription = ({ description }: Props) => {
-  return <>{<p className="grow my-2 text-gray-500">{description || ""}</p>}</>;
+  return <>{<p className="grow text-gray-500 mb-2">{description || ""}</p>}</>;
 };

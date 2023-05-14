@@ -20,7 +20,7 @@ const Article: NextPage<Props> = ({ work }: Props) => {
       className="flex flex-col overflow-hidden rounded-lg border bg-white shadow-lg hover:scale-105 duration-300"
     >
       <Eyecatch eyecatch={work.eyecatch} />
-      <div className="flex flex-1 flex-col p-3">
+      <div className="flex flex-1 flex-col p-3 border-gray-200 border-t-2">
         <ProjectTitle title={work.title} />
         <Tags tags={work.tags} />
         <ProjectDescription description={work.description} />

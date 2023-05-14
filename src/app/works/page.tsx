@@ -1,7 +1,6 @@
 import Article from '@/components/works/Article';
 import type { Work } from '@/app/types';
 import { client } from '@/libs/client';
-import Link from 'next/link';
 
 const getWorks = async (): Promise<Work[]> => {
   const data = await client.get({
