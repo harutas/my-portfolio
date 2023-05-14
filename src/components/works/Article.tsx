@@ -1,11 +1,12 @@
 "use client";
-import type { Work } from "@/app/types";
 import { NextPage } from "next";
+import Link from "next/link";
 import { Eyecatch } from "@/components/works/Eyecatch";
 import { ProjectTitle } from "@/components/works/ProjectTitle";
 import { Tags } from "@/components/works/Tags";
 import { ProjectDescription } from "@/components/works/ProjectDescription";
 import { LinkButtons } from "@/components/works/LinkButtons";
+import type { Work } from "@/app/types";
 
 interface Props {
   work: Work;
@@ -14,8 +15,8 @@ interface Props {
 const Article: NextPage<Props> = ({ work }: Props) => {
   return (
     // article - start
-    <div
-      key={work.id}
+    <Link
+      href={`/works/${work.id}`}
       className="flex flex-col overflow-hidden rounded-lg border bg-white shadow-lg hover:scale-105 duration-300"
     >
       <Eyecatch eyecatch={work.eyecatch} />
@@ -25,7 +26,7 @@ const Article: NextPage<Props> = ({ work }: Props) => {
         <ProjectDescription description={work.description} />
         <LinkButtons websiteURL={work.websiteURL} githubURL={work.githubURL} />
       </div>
-    </div>
+    </Link>
   );
 };
 

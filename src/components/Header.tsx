@@ -1,10 +1,9 @@
 "use client";
-
 import Link from "next/link";
 import { useRef } from "react";
 import { useDimensions } from "@/app/hooks/useDimensions";
 import { usePathname } from "next/navigation";
-import { motion, useCycle } from "framer-motion";
+import { AnimatePresence, motion, useCycle } from "framer-motion";
 import { MenuToggle } from "./header/MenuToggle";
 import { Navigation } from "./header/Navigation";
 
@@ -71,7 +70,10 @@ const Header = () => {
 
   return (
     <div className="mx-auto max-w-screen-2xl px-8 bg-teal-200">
-      <header className="flex items-center justify-end py-5 h-20">
+      <header className="flex items-center justify-between py-5 h-20">
+        <Link href={"/"}>
+          <h1 className="text-3xl font-bold">Haru-Devs</h1>
+        </Link>
         {/* ナビゲーション */}
         <motion.nav className="hidden gap-12 lg:flex">{navLink}</motion.nav>
 
@@ -83,7 +85,9 @@ const Header = () => {
           ref={containerRef}
         >
           <motion.div className="bg-gray-200 absolute top-0 right-0 bottom-0 w-80" variants={sidebar} style={style} />
-          {isOpen && <Navigation navLinkPath={navLinkPath} pathname={pathname} toggle={() => toggleOpen()} />}
+          <AnimatePresence>
+            {isOpen && <Navigation navLinkPath={navLinkPath} pathname={pathname} toggle={() => toggleOpen()} />}
+          </AnimatePresence>
           <MenuToggle toggle={toggleOpen}></MenuToggle>
         </motion.nav>
       </header>
