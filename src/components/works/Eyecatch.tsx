@@ -1,11 +1,8 @@
+import { MicroCMSImage } from "microcms-js-sdk";
 import Image from "next/image";
 
 interface Props {
-  eyecatch: {
-    url: string;
-    height: number;
-    width: number;
-  };
+  eyecatch: MicroCMSImage;
 }
 
 export const Eyecatch = ({ eyecatch }: Props) => {

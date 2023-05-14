@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 import { NextPage } from "next";
 import Link from "next/link";
 import { Eyecatch } from "@/components/works/Eyecatch";
@@ -6,10 +6,11 @@ import { ProjectTitle } from "@/components/works/ProjectTitle";
 import { Tags } from "@/components/works/Tags";
 import { ProjectDescription } from "@/components/works/ProjectDescription";
 import { LinkButtons } from "@/components/works/LinkButtons";
-import type { Work } from "@/app/types";
+import type { Work } from "@/libs/client";
+import { MicroCMSContentId, MicroCMSDate } from "microcms-js-sdk";
 
 interface Props {
-  work: Work;
+  work: Work & MicroCMSContentId & MicroCMSDate;
 }
 
 const Article: NextPage<Props> = ({ work }: Props) => {
@@ -24,7 +25,7 @@ const Article: NextPage<Props> = ({ work }: Props) => {
         <ProjectTitle title={work.title} />
         <Tags tags={work.tags} />
         <ProjectDescription description={work.description} />
-        <LinkButtons websiteURL={work.websiteURL} githubURL={work.githubURL} />
+        {/* <LinkButtons websiteURL={work.websiteURL} githubURL={work.githubURL} /> */}
       </div>
     </Link>
   );

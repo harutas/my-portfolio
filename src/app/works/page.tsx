@@ -1,19 +1,8 @@
 import Article from '@/components/works/Article';
-import type { Work } from '@/app/types';
-import { client } from '@/libs/client';
-import { notFound } from 'next/navigation';
-
-const getWorks = async (): Promise<Work[]> => {
-  const data = await client.get({
-    endpoint: 'works',
-  });
-  return data.contents;
-};
+import { getWorksList } from '@/libs/client';
 
 const Works = async () => {
-  const works = await getWorks().catch(() => {
-    notFound();
-  });
+  const { contents } = await getWorksList();
 
   return (
     <div className='bg-white py-6 sm:py-8'>
@@ -24,7 +13,7 @@ const Works = async () => {
         </h2>
         {/* works list */}
         <div className='grid gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-3'>
-          {works.map((work: Work) => (
+          {contents.map((work) => (
             <Article key={work.id} work={work} />
           ))}
         </div>

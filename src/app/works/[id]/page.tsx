@@ -1,6 +1,5 @@
-'use client';
-import { client } from '@/libs/client';
-import { Work } from '@/app/types';
+// 'use client';
+import { getWorksList, getWorksDetail } from '@/libs/client';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import WebsiteButton from '@/components/button/WebsiteButton';
@@ -9,28 +8,22 @@ import BackButton from '@/components/button/BackButton';
 
 // SSG(Static Site Generation)
 export async function generateStaticParams() {
-  const data = await client.get({
-    endpoint: 'works',
-  });
-  const works = data.contents as Work[];
+  const { contents } = await getWorksList();
 
-  return works.map((work) => ({
-    id: work.id,
-  }));
+  const paths = contents.map((work) => {
+    return {
+      id: work.id,
+    };
+  });
+
+  return [...paths];
 }
 
-const getWorks = async (id: string): Promise<Work> => {
-  const data = await client.get({
-    endpoint: 'works',
-    contentId: id,
-  });
-  return data;
-};
-
-export default async function WorksDetailPage({ params }: { params: { id: string } }) {
-  const work = await getWorks(params.id).catch(() => {
+export default async function WorksDetailPage({ params: { id } }: { params: { id: string } }) {
+  const work = await getWorksDetail(id);
+  if (!work) {
     notFound();
-  });
+  }
   return (
     <>
       <div className='container mx-auto px-2 lg:px-8 my-6'>
@@ -51,11 +44,11 @@ export default async function WorksDetailPage({ params }: { params: { id: string
             })}
           </div>
         </div>
-        <div className='flex justify-end flex-wrap gap-1 mb-4'>
+        {/* <div className='flex justify-end flex-wrap gap-1 mb-4'>
           <WebsiteButton websiteURL={work.websiteURL} />
           <GithubButton githubURL={work.githubURL} />
           <BackButton />
-        </div>
+        </div> */}
         <div className='lg:grid lg:grid-cols-2 lg:gap-8'>
           <Image
             src={work.eyecatch.url}
