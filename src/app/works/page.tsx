@@ -1,6 +1,7 @@
 import Article from '@/components/works/Article';
 import type { Work } from '@/app/types';
 import { client } from '@/libs/client';
+import { notFound } from 'next/navigation';
 
 const getWorks = async (): Promise<Work[]> => {
   const data = await client.get({
@@ -10,7 +11,9 @@ const getWorks = async (): Promise<Work[]> => {
 };
 
 const Works = async () => {
-  const works = await getWorks();
+  const works = await getWorks().catch(() => {
+    notFound();
+  });
 
   return (
     <div className='bg-white py-6 sm:py-8'>
