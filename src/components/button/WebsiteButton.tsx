@@ -6,18 +6,16 @@ interface Props {
 }
 
 const WebsiteButton = ({ websiteURL }: Props) => {
-  const handleClickOpen = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    window.open(websiteURL || "");
-  };
   return (
-    <button
-      className="flex justify-around items-center text-xl w-32 font-semibold rounded py-2 px-4 bg-teal-200 hover:bg-teal-100"
-      onClick={handleClickOpen}
+    <a
+      href={`${websiteURL}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex justify-around items-center text-xl w-28 font-semibold rounded py-2 px-4 bg-teal-200 hover:bg-teal-100"
     >
       <Image src={webIcon} width={28} alt="" />
       <span className="ml-2">Visit</span>
-    </button>
+    </a>
   );
 };
 

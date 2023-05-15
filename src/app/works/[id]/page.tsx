@@ -44,11 +44,11 @@ export default async function WorksDetailPage({ params: { id } }: { params: { id
             })}
           </div>
         </div>
-        {/* <div className='flex justify-end flex-wrap gap-1 mb-4'>
+        <div className='flex justify-end flex-wrap gap-2 mb-4'>
           <WebsiteButton websiteURL={work.websiteURL} />
           <GithubButton githubURL={work.githubURL} />
           <BackButton />
-        </div> */}
+        </div>
         <div className='lg:grid lg:grid-cols-2 lg:gap-8'>
           <Image
             src={work.eyecatch.url}

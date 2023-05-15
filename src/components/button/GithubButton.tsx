@@ -6,18 +6,16 @@ interface Props {
 }
 
 const GithubButton = ({ githubURL }: Props) => {
-  const handleClickOpen = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    window.open(githubURL || "");
-  };
   return (
-    <button
-      className="flex justify-around items-center text-xl w-32 font-semibold rounded py-2 px-4 bg-gray-800 hover:bg-gray-700 text-white"
-      onClick={handleClickOpen}
+    <a
+      href={`${githubURL}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex justify-around items-center text-xl w-28 font-semibold rounded py-2 px-4 bg-gray-800 hover:bg-gray-700 text-white"
     >
       <Image src={githubIcon} width={28} alt="" />
       <span className="ml-2">Github</span>
-    </button>
+    </a>
   );
 };
 
