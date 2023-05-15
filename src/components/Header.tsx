@@ -9,7 +9,7 @@ import { Navigation } from "@/components/header/Navigation";
 import { navLinkPath } from "@/app/config";
 
 const sidebar = {
-  open: (height = 1000) => ({
+  open: (height = window.innerHeight) => ({
     clipPath: `circle(${height * 2 + 200}px at 276px 38px)`,
     transition: {
       type: "spring",
@@ -65,12 +65,12 @@ const Header = () => {
 
         {/* ハンバーガーメニュー */}
         <motion.nav
-          className="flex items-center lg:hidden"
+          className="relative flex items-center lg:hidden z-10"
           animate={isOpen ? "open" : "closed"}
           custom={height}
           ref={containerRef}
         >
-          <motion.div className="bg-gray-200 absolute top-0 right-0 bottom-0 w-80" variants={sidebar} style={style} />
+          <motion.div className="bg-gray-200 fixed top-0 right-0 bottom-0 w-80" variants={sidebar} style={style} />
           <AnimatePresence>
             {isOpen && <Navigation navLinkPath={navLinkPath} pathname={pathname} toggle={() => toggleOpen()} />}
           </AnimatePresence>
