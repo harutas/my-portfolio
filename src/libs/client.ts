@@ -1,7 +1,7 @@
 import { createClient } from "microcms-js-sdk";
 import type { MicroCMSQueries, MicroCMSImage, MicroCMSDate } from "microcms-js-sdk";
 
-export interface Work {
+export type Work = {
   id: string;
   title: string;
   description: string;
@@ -10,20 +10,12 @@ export interface Work {
   tags: Tag[];
   websiteURL: string;
   githubURL: string;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-  revisedAt: string;
-}
+} & MicroCMSDate;
 
-export interface Tag {
+export type Tag = {
   id: string;
   tag: string;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-  revisedAt: string;
-}
+} & MicroCMSDate;
 
 if (!process.env.NEXT_PUBLIC_SERVICE_DOMAIN) {
   throw new Error("NEXT_PUBLIC_SERVICE_DOMAIN is required");

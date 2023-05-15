@@ -7,10 +7,9 @@ import { Tags } from "@/components/works/Tags";
 import { ProjectDescription } from "@/components/works/ProjectDescription";
 import { LinkButtons } from "@/components/works/LinkButtons";
 import type { Work } from "@/libs/client";
-import { MicroCMSContentId, MicroCMSDate } from "microcms-js-sdk";
 
 interface Props {
-  work: Work & MicroCMSContentId & MicroCMSDate;
+  work: Work;
 }
 
 const Article: NextPage<Props> = ({ work }: Props) => {

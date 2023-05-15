@@ -1,4 +1,4 @@
-import { Tag } from "@/app/types";
+import { Tag } from "@/libs/client";
 import { WorksPageGettingTagLimit } from "@/app/config";
 
 interface Props {
