@@ -6,6 +6,9 @@ import WebsiteButton from '@/components/button/WebsiteButton';
 import GithubButton from '@/components/button/GithubButton';
 import BackButton from '@/components/button/BackButton';
 
+// Dynamic segments not included in generateStaticParams will return a 404.
+export const dynamicParams = false;
+
 // SSG(Static Site Generation)
 export async function generateStaticParams() {
   const { contents } = await getWorksList();
