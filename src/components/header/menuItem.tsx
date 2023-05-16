@@ -1,15 +1,16 @@
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { NavLinkPath } from "@/app/types";
 import { motion } from "framer-motion";
 import "./../../app/globals.css";
 
 interface Props {
   navLinkPath: NavLinkPath;
-  pathname: string;
   toggle: () => void;
 }
 
-export const MenuItem = ({ navLinkPath, pathname, toggle }: Props) => {
+export const MenuItem = ({ navLinkPath, toggle }: Props) => {
+  const pathname = usePathname();
   return (
     <Link href={navLinkPath.linkPath}>
       <motion.li

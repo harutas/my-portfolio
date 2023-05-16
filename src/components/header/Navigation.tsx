@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { MenuItem } from "@/components/header/menuItem";
-import { NavLinkPath } from "@/app/types";
+import { navLinkPaths } from "@/app/config";
 import "./../../app/globals.css";
 
 const variants = {
@@ -13,15 +13,13 @@ const variants = {
 };
 
 interface Props {
-  navLinkPath: NavLinkPath[];
-  pathname: string;
   toggle: () => void;
 }
 
-export const Navigation = ({ navLinkPath, pathname, toggle }: Props) => (
+export const Navigation = ({ toggle }: Props) => (
   <motion.ul className="fixed" variants={variants}>
-    {navLinkPath.map((path) => (
-      <MenuItem key={path.linkPath} navLinkPath={path} pathname={pathname} toggle={toggle} />
+    {navLinkPaths.map((path) => (
+      <MenuItem key={path.linkPath} navLinkPath={path} toggle={toggle} />
     ))}
   </motion.ul>
 );

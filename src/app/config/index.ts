@@ -1,4 +1,4 @@
-export const navLinkPath = [
+export const navLinkPaths = [
   {
     linkPath: '/',
     navText: 'Home',
