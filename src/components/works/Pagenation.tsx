@@ -21,11 +21,13 @@ export const Pagenation = ({ totalCount }: { totalCount: number }) => {
         </Link>
       </li>
       {range(1, Math.ceil(totalCount / WORKS_PER_PAGE)).map((number, index) => (
-        <li
-          key={index}
-          className="flex justify-center items-center w-10 h-10 rounded-full mx-2 first:ml-0 last:mr-0 text-indigo-600 transition-colors duration-150 focus:shadow-outline hover:bg-indigo-100"
-        >
-          <Link href={`/works/page/${number}`}>{number}</Link>
+        <li key={index}>
+          <Link
+            href={`/works/page/${number}`}
+            className="flex justify-center items-center w-10 h-10 rounded-full mx-2 first:ml-0 last:mr-0 text-indigo-600 transition-colors duration-150 focus:shadow-outline hover:bg-indigo-100"
+          >
+            {number}
+          </Link>
         </li>
       ))}
       <li>
