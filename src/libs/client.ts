@@ -1,5 +1,5 @@
 import { createClient } from "microcms-js-sdk";
-import type { MicroCMSQueries, MicroCMSImage, MicroCMSDate } from "microcms-js-sdk";
+import type { MicroCMSQueries, MicroCMSImage, MicroCMSDate, MicroCMSListResponse } from "microcms-js-sdk";
 
 export type Work = {
   id: string;

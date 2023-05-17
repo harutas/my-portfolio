@@ -17,7 +17,7 @@ interface Props {
 }
 
 export const Navigation = ({ toggle }: Props) => (
-  <motion.ul className="fixed" variants={variants}>
+  <motion.ul className="nav fixed" variants={variants}>
     {navLinkPaths.map((path) => (
       <MenuItem key={path.linkPath} navLinkPath={path} toggle={toggle} />
     ))}

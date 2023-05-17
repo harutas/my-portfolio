@@ -4,9 +4,28 @@ import Article from '@/components/works/article/Article';
 import { getWorksList } from '@/libs/client';
 import { WORKS_PER_PAGE } from '@/app/config';
 
-const Works = async () => {
+// Dynamic segments not included in generateStaticParams will return a 404.
+export const dynamicParams = false;
+
+// SSG(Static Site Generation)
+export async function generateStaticParams() {
+  const data = await getWorksList();
+
+  const range = (start: number, end: number) =>
+    [...Array(end - start + 1)].map((_, i) => start + i);
+
+  const paths = range(1, Math.ceil(data.totalCount / WORKS_PER_PAGE)).map((page) => {
+    return {
+      id: page.toString(),
+    };
+  });
+
+  return [...paths];
+}
+
+const WorksPage = async ({ params: { id } }: { params: { id: string } }) => {
   const data = await getWorksList({
-    offset: 0,
+    offset: (Number(id) - 1) * WORKS_PER_PAGE,
     limit: WORKS_PER_PAGE,
   });
 
@@ -30,4 +49,4 @@ const Works = async () => {
   );
 };
 
-export default Works;
+export default WorksPage;

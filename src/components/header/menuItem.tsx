@@ -35,7 +35,7 @@ export const MenuItem = ({ navLinkPath, toggle }: Props) => {
           transition: { duration: 0.2, ease: "easeInOut" },
         }}
         whileTap={{ scale: 0.95 }}
-        className={`text-2xl flex justify-center ${navLinkPath.linkPath === pathname ? "text-indigo-700" : ""}`}
+        className={`nav text-2xl flex justify-center ${navLinkPath.linkPath === pathname ? "text-indigo-700" : ""}`}
         onClick={toggle}
       >
         {navLinkPath.navText}

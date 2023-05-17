@@ -14,3 +14,5 @@ export const navLinkPaths = [
 ];
 
 export const WorksPageGettingTagLimit = 4;
+
+export const WORKS_PER_PAGE = 2;

@@ -2,21 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-ul,
-li {
+ul.nav,
+li.nav {
   margin: 0;
   padding: 0;
 }
 
-ul {
+ul.nav {
   padding: 25px;
-  position: absolute;
   top: 100px;
   width: 320px;
   right: 0px;
 }
 
-li {
+li.nav {
   list-style: none;
   margin-bottom: 20px;
   display: flex;

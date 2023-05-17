@@ -1,4 +1,3 @@
-// 'use client';
 import { getWorksList, getWorksDetail } from '@/libs/client';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
