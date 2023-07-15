@@ -31,9 +31,13 @@ export default async function WorksDetailPage({ params: { id } }: { params: { id
       <div className='container mx-auto px-2 lg:px-8 my-6'>
         <div className='mx-auto'>
           <div>
-            <p className='text-xl mb-2'>Project</p>
-            <h2 className='text-5xl font-semibold mb-4'>{work.title}</h2>
-            <p className='text-xl mb-2'>Stacks</p>
+            <p className='text-xl font-semibold mb-2'>
+              Project{' '}
+              {work.subtitle && <span className='font-normal text-lg'> -{work.subtitle}-</span>}
+            </p>
+            <h2 className='text-5xl font-semibold underline-left-to-right mb-4'>{work.title}</h2>
+
+            <p className='text-xl font-semibold mb-2'>Stack</p>
             {work.tags.map((tag) => {
               return (
                 <span

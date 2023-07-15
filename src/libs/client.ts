@@ -1,9 +1,10 @@
 import { createClient } from "microcms-js-sdk";
-import type { MicroCMSQueries, MicroCMSImage, MicroCMSDate, MicroCMSListResponse } from "microcms-js-sdk";
+import type { MicroCMSQueries, MicroCMSImage, MicroCMSDate } from "microcms-js-sdk";
 
 export type Work = {
   id: string;
   title: string;
+  subtitle: string;
   description: string;
   body: string;
   eyecatch: MicroCMSImage;
@@ -12,7 +13,7 @@ export type Work = {
   githubURL: string;
 } & MicroCMSDate;
 
-export type Tag = {
+type Tag = {
   id: string;
   tag: string;
 } & MicroCMSDate;
