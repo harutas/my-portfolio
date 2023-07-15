@@ -22,3 +22,7 @@ li.nav {
   align-items: center;
   cursor: pointer;
 }
+
+.h-screen-minus-header {
+  height: calc(100vh - 80px);
+}

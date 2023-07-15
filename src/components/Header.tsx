@@ -38,7 +38,7 @@ const Header = () => {
   const { height } = useDimensions(containerRef);
 
   return (
-    <div className="mx-auto max-w-screen-2xl px-8 bg-emerald-200">
+    <div className="mx-auto px-8 bg-emerald-200">
       <header className="flex items-center justify-between py-5 h-20">
         <Link href={"/"}>
           <h1 className="text-3xl font-bold">Haru-Devs</h1>
