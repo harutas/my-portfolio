@@ -32,8 +32,10 @@ export default async function WorksDetailPage({ params: { id } }: { params: { id
         <div className='mx-auto'>
           <div>
             <p className='text-xl font-semibold mb-2'>
-              Project{' '}
-              {work.subtitle && <span className='font-normal text-lg'> -{work.subtitle}-</span>}
+              Project
+              {work.subtitle && (
+                <span className='font-normal sm:text-lg text-base'> -{work.subtitle}-</span>
+              )}
             </p>
             <h2 className='text-5xl font-semibold underline-left-to-right mb-4'>{work.title}</h2>
 
@@ -65,7 +67,7 @@ export default async function WorksDetailPage({ params: { id } }: { params: { id
             alt=''
           />
           <div className='mx-auto'>
-            <p className='text-3xl font-semibold mb-2'>About</p>
+            <p className='text-xl font-semibold mb-2'>About</p>
             <p className='text-md'>{work.description}</p>
           </div>
         </div>
