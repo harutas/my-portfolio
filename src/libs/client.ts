@@ -13,7 +13,7 @@ export type Work = {
   githubURL: string;
 } & MicroCMSDate;
 
-type Tag = {
+export type Tag = {
   id: string;
   tag: string;
 } & MicroCMSDate;
