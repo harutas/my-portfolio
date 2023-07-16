@@ -14,7 +14,7 @@ const Works = async () => {
     <div className='py-6'>
       <div className='mx-auto max-w-screen-2xl px-4 sm:px-8 lg:px-16'>
         {/* sub header */}
-        <h2 className='mb-6 text-center text-2xl font-bold text-gray-800 lg:text-3xl'>My Works</h2>
+        <h2 className='mb-6 text-center text-5xl text-gray-800 sm:text-6xl'>My Works</h2>
         {/* works list */}
         <div className='grid gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-3'>
           {data.contents.map((work) => (

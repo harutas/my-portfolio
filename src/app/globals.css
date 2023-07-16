@@ -26,3 +26,29 @@ li.nav {
 .h-screen-minus-header {
   height: calc(100vh - 80px);
 }
+
+@keyframes underline {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.underline-left-to-right {
+  position: relative;
+  display: inline-block;
+}
+
+.underline-left-to-right::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 10px;
+  opacity: 70%;
+  background-color: #fed7aa;
+  animation: underline 0.4s linear forwards;
+}
